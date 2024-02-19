@@ -31,7 +31,7 @@ jobs:
       max-parallel: 6
       matrix:
         java: ['dev', '22-ea']
-        distribution: ['graalvm-community', 'graal']
+        distribution: ['graalvm-community', 'graalvm']
         native_test_task: ${{ fromJson(needs.build_matrix.outputs.matrix).native_test_task }}
         exclude:
           - java: 'dev'
