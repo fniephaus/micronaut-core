@@ -29,12 +29,13 @@ jobs:
     strategy:
       max-parallel: 6
       matrix:
-        java: ['dev']
-        distribution: ['graalvm-community']
-        native_test_task: ${{ fromJson(needs.build_matrix.outputs.matrix).native_test_task }}
         include:
+          - java: 'dev'
+            distribution: 'graalvm-community'
+            native_test_task: ${{ fromJson(needs.build_matrix.outputs.matrix).native_test_task }}
           - java: '22-ea'
             distribution: 'graalvm'
+            native_test_task: ${{ fromJson(needs.build_matrix.outputs.matrix).native_test_task }}
     env:
       GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
       GRADLE_ENTERPRISE_CACHE_USERNAME: ${{ secrets.GRADLE_ENTERPRISE_CACHE_USERNAME }}
